@@ -29,7 +29,7 @@ setTimeout(() => {
 }, 3300);
 
 window.addEventListener("keydown", (e) => {
-  //按下enter不會回傳表單
+  //按下enter部會回傳表單
   if (e.key === "Enter") {
     e.preventDefault(); // 防止預設行為
   }
@@ -154,4 +154,110 @@ addButton.addEventListener("click", () => {
   //創建五個小元素
   let NewInput1 = document.createElement("input");
   NewInput1.setAttribute("type", "text");
+  NewInput1.setAttribute("list", "opt");
+  NewInput1.classList.add("class-type");
+
+  let NewInput2 = document.createElement("input");
+  NewInput2.setAttribute("type", "text");
+  NewInput2.classList.add("class-number");
+
+  let NewInput3 = document.createElement("input");
+  NewInput3.setAttribute("type", "number");
+  NewInput3.setAttribute("min", "0");
+  NewInput3.setAttribute("max", "6");
+  NewInput3.classList.add("class-credits");
+
+  let newSelect = document.createElement("select");
+  newSelect.classList.add("select");
+  var opt1 = document.createElement("option");
+  opt1.setAttribute("value", "");
+  let textNode1 = document.createTextNode("");
+  opt1.appendChild(textNode1);
+  var opt2 = document.createElement("option");
+  opt2.setAttribute("value", "A");
+  let textNode2 = document.createTextNode("A");
+  opt2.appendChild(textNode2);
+  var opt3 = document.createElement("option");
+  opt3.setAttribute("value", "A-");
+  let textNode3 = document.createTextNode("A-");
+  opt3.appendChild(textNode3);
+  var opt4 = document.createElement("option");
+  opt4.setAttribute("value", "B+");
+  let textNode4 = document.createTextNode("B+");
+  opt4.appendChild(textNode4);
+  var opt5 = document.createElement("option");
+  opt5.setAttribute("value", "B");
+  let textNode5 = document.createTextNode("B");
+  opt5.appendChild(textNode5);
+  var opt6 = document.createElement("option");
+  opt6.setAttribute("value", "B-");
+  let textNode6 = document.createTextNode("B-");
+  opt6.appendChild(textNode6);
+  var opt7 = document.createElement("option");
+  opt7.setAttribute("value", "C+");
+  let textNode7 = document.createTextNode("C+");
+  opt7.appendChild(textNode7);
+  var opt8 = document.createElement("option");
+  opt8.setAttribute("value", "C");
+  let textNode8 = document.createTextNode("C");
+  opt8.appendChild(textNode8);
+  var opt9 = document.createElement("option");
+  opt9.setAttribute("value", "C-");
+  let textNode9 = document.createTextNode("C-");
+  opt9.appendChild(textNode9);
+  var opt10 = document.createElement("option");
+  opt10.setAttribute("value", "D+");
+  let textNode10 = document.createTextNode("D+");
+  opt10.appendChild(textNode10);
+  var opt11 = document.createElement("option");
+  opt11.setAttribute("value", "D");
+  let textNode11 = document.createTextNode("D");
+  opt11.appendChild(textNode11);
+  var opt12 = document.createElement("option");
+  opt12.setAttribute("value", "D-");
+  let textNode12 = document.createTextNode("D-");
+  opt12.appendChild(textNode12);
+  var opt13 = document.createElement("option");
+  opt13.setAttribute("value", "F");
+  let textNode13 = document.createTextNode("F");
+  opt13.appendChild(textNode13);
+
+  newSelect.appendChild(opt1);
+  newSelect.appendChild(opt2);
+  newSelect.appendChild(opt3);
+  newSelect.appendChild(opt4);
+  newSelect.appendChild(opt5);
+  newSelect.appendChild(opt6);
+  newSelect.appendChild(opt7);
+  newSelect.appendChild(opt8);
+  newSelect.appendChild(opt9);
+  newSelect.appendChild(opt10);
+  newSelect.appendChild(opt11);
+  newSelect.appendChild(opt12);
+  newSelect.appendChild(opt13);
+
+  newSelect.addEventListener("change", (e) => {
+    setGPA();
+    changeColor(e.target);
+  });
+
+  let NewButton = document.createElement("button");
+  NewButton.classList.add("trash-button");
+  let NewItag = document.createElement("i");
+  NewItag.classList.add("fas");
+  NewItag.classList.add("fa-trash");
+  NewButton.appendChild(NewItag);
+
+  /*子元素添加到父元素最後一個*/
+  NewDiv.appendChild(NewInput1);
+  NewDiv.appendChild(NewInput2);
+  NewDiv.appendChild(NewInput3);
+  NewDiv.appendChild(newSelect);
+  NewDiv.appendChild(NewButton);
+  NewForm.appendChild(NewDiv);
+
+  document.querySelector(".All-input").appendChild(NewForm);
+  NewInput3.addEventListener("change", () => {
+    setGPA();
+  });
 });
