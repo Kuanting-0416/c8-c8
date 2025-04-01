@@ -260,4 +260,12 @@ addButton.addEventListener("click", () => {
   NewInput3.addEventListener("change", () => {
     setGPA();
   });
+  NewForm.style.animation = "scaleup 0.5s ease forwards";
+});
+
+let allTrash = document.querySelectorAll(".trash-button"); // 選取所有 class="trash-button" 的按鈕
+allTrash.forEach((trash) => {
+  trash.addEventListener("click", (e) => {
+    e.target.parentElement.parentElement.classList.add("remove");
+  });
 });
