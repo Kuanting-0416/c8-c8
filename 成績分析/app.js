@@ -269,3 +269,11 @@ allTrash.forEach((trash) => {
     e.target.parentElement.parentElement.classList.add("remove");
   });
 });
+
+allTrash.forEach((trash) => {
+  let form = trash.parentElement.parentElement;
+  form.addEventListener("transitionend", (e) => {
+    e.target.remove();
+    setGPA;
+  });
+});
