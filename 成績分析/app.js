@@ -248,6 +248,19 @@ addButton.addEventListener("click", () => {
   NewItag.classList.add("fa-trash");
   NewButton.appendChild(NewItag);
 
+  NewButton.addEventListener("click", (e) => {
+    e.preventDefault(); /*按下後不會提交整張表單*/
+    e.target.parentElement.parentElement.style.animation =
+      "scaleDown 0.5s ease forwards";
+    e.target.parentElement.parentElement.addEventListener(
+      "animationend",
+      (e) => {
+        e.target.remove();
+        setGPA();
+      }
+    );
+  });
+
   /*子元素添加到父元素最後一個*/
   NewDiv.appendChild(NewInput1);
   NewDiv.appendChild(NewInput2);
@@ -261,10 +274,12 @@ addButton.addEventListener("click", () => {
     setGPA();
   });
   NewForm.style.animation = "scaleup 0.5s ease forwards";
+  /*宣告.style.animation = (名稱(自己宣告的 時間 效果 最後停留在最後一針))*/
 });
 
 let allTrash = document.querySelectorAll(".trash-button"); // 選取所有 class="trash-button" 的按鈕
 allTrash.forEach((trash) => {
+  /*當有button被按下時，會去刪除那一個所屬的父元素*/
   trash.addEventListener("click", (e) => {
     e.target.parentElement.parentElement.classList.add("remove");
   });
