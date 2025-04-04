@@ -144,6 +144,33 @@ body {
   }
 }
 
+.remove {
+  transform: scale(0);
+  transition: all 0.5s ease;
+}
+
+@keyframes scaleup {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
 @keyframes border-color {
   /*設定動畫變化*/
   0% {
