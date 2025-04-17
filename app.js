@@ -292,3 +292,25 @@ allTrash.forEach((trash) => {
     setGPA;
   });
 });
+
+//升降排序法
+let btn1 = document.querySelector(".sort-descending");
+let btn2 = document.querySelector(".sort-ascending");
+
+btn1.addEventListener("click", () => {
+  handlesorting("descending"); //降序
+});
+btn2.addEventListener("click", () => {
+  handlesorting("ascending"); //升序
+});
+
+function handlesorting(direction) {
+  let grader = document.querySelectorAll("div.grader"); //選取元素
+  let objectArray = []; //建立空陣列，用來存放物件
+  for (let i = 0; i < grader.length; i++) {
+    let class_name = grader[i].children[0].value;
+    let class_number = grader[i].children[1].value;
+    let class_credit = grader[i].children[2].value;
+    let class_grade = grader[i].children[3].value;
+  }
+}
