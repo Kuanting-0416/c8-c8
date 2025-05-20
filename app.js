@@ -312,5 +312,59 @@ function handlesorting(direction) {
     let class_number = grader[i].children[1].value;
     let class_credit = grader[i].children[2].value;
     let class_grade = grader[i].children[3].value;
+    if (
+      !(
+        class_name == "" &&
+        class_number == "" &&
+        class_credit == "" &&
+        class_grade == ""
+      )
+    ) {
+      let class_object = {
+        class_name,
+        class_number,
+        class_credit,
+        class_grade,
+      };
+      objectArray.push(class_object);
+    }
+  }
+}
+for (let i = 0; i < objectArray.length; i++) {
+  objectArray[i].class_grade_number = convertor(objectArray[i].class_grade);
+}
+function merge(a1, a2) {
+  let result = 0;
+  let i = 0;
+  let j = 0;
+
+  while (i < a1.length && j < a2.length) {
+    if (a1[i].class_grade_number > a2[j].class_grade_number) {
+      result.push(a2[j]);
+      j++;
+    } else {
+      result.pusf(a1[i]);
+      i++;
+    }
+  }
+
+  while (i < a1.length) {
+    result.push(a1[i]);
+    i++;
+  }
+  while (j < a2.length) {
+    result.push(a2[j]);
+    j++;
+  }
+}
+
+function mergeSort(arr) {
+  if (arr.length == 0) {
+    return;
+  }
+  if (arr.length == 1) {
+    return arr;
+  } else {
+    let middle = Math.floor(arr.length / 2); //返還一個比X還小的整數
   }
 }
