@@ -292,3 +292,90 @@ allTrash.forEach((trash) => {
     setGPA;
   });
 });
+
+//升降排序法
+let btn1 = document.querySelector(".sort-descending");
+let btn2 = document.querySelector(".sort-ascending");
+
+btn1.addEventListener("click", () => {
+  handlesorting("descending"); //降序
+});
+btn2.addEventListener("click", () => {
+  handlesorting("ascending"); //升序
+});
+
+function handlesorting(direction) {
+  let grader = document.querySelectorAll("div.grader"); //選取元素
+  let objectArray = []; //建立空陣列，用來存放物件
+  for (let i = 0; i < grader.length; i++) {
+    let class_name = grader[i].children[0].value;
+    let class_number = grader[i].children[1].value;
+    let class_credit = grader[i].children[2].value;
+    let class_grade = grader[i].children[3].value;
+    if (
+      !(
+        class_name == "" &&
+        class_number == "" &&
+        class_credit == "" &&
+        class_grade == ""
+      )
+    ) {
+      let class_object = {
+        class_name,
+        class_number,
+        class_credit,
+        class_grade,
+      };
+      objectArray.push(class_object);
+    }
+  }
+  for (let i = 0; i < objectArray.length; i++) {
+    objectArray[i].class_grade_number = convertor(objectArray[i].class_grade);
+  }
+
+  objectArray = mergeSort(objectArray);
+  console.log("objectArray", objectArray);
+  if (direction == "descending") {
+    objectArray = objectArray.reverse();
+  }
+}
+
+function merge(a1, a2) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < a1.length && j < a2.length) {
+    if (a1[i].class_grade_number > a2[j].class_grade_number) {
+      result.push(a2[j]);
+      j++;
+    } else {
+      result.push(a1[i]);
+      i++;
+    }
+  }
+
+  while (i < a1.length) {
+    result.push(a1[i]);
+    i++;
+  }
+  while (j < a2.length) {
+    result.push(a2[j]);
+    j++;
+  }
+  return result;
+}
+
+function mergeSort(arr) {
+  if (arr.length == 0) {
+    return [];
+  }
+  if (arr.length == 1) {
+    return arr;
+  } else {
+    let middle = Math.floor(arr.length / 2); //返還一個比X還小的整數
+    let left = arr.slice(0, middle); //slice 回傳新陣列 回傳0-中間值
+    let right = arr.slice(middle, arr.length);
+    return merge(mergeSort(left), mergeSort(right));
+  }
+}
