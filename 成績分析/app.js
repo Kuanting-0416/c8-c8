@@ -338,6 +338,55 @@ function handlesorting(direction) {
   if (direction == "descending") {
     objectArray = objectArray.reverse();
   }
+  let allInputs = document.querySelector(".All-input");
+  allInputs.innerHTML = ""; //清空All-input資料
+
+  for (let i = 0; i < objectArray.length; i++) {
+    allInputs.innerHTML += `<form>
+  <div class="grader">
+    <input
+    type="text"
+    placeholder="class category"
+    class="class-type"
+    list="opt"
+    value=${objectArray[i].class_name}
+    /><!----><input
+    type="text"
+    placeholder="class-number"
+    class="class-number"
+    value=${objectArray[i].class_number}
+    /><!----><input
+    type="number"   
+    placeholder="credits"
+    max="6"
+    min="0"
+    class="class-credits"
+    value=${objectArray[i].class_credit}
+    /><!----><select name="select" class="select">
+    <option value=""></option>
+    <option value="A">A</option>y5
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+    <option value="B">B</option>
+    <option value="B-">B-</option>
+    <option value="C+">C+</option>
+    <option value="C">C</option>
+    <option value="C-">C-</option>
+    <option value="D+">D+</option>
+    <option value="D">D</option>
+    <option value="D-">D-</option>
+    <option value="F">F</option>
+    </select><!----><button class="trash-button">
+    <!--垃圾桶-->
+    <i class="fas fa-trash"></i>
+    </button>
+  </div>
+</form>`;
+  }
+  garders = document.querySelectorAll(".All-garder");
+  for (let i = 0; i < garders.length; i++) {
+    garders[i].children[3].value = objectArray[i].class_grade;
+  }
 }
 
 function merge(a1, a2) {
