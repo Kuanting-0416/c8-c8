@@ -1,0 +1,179 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.button {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  margin: 1rem 0.5rem;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+body {
+  background-color: #727272;
+  color: white;
+  font-family: "baloo 2", cursive; /* 字體使用 "Baloo 2"，備選為手寫風格 */
+}
+body section.animation-wrapper {
+  position: fixed; /*固定在視窗上，不會隨著滾動條移動。*/
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+}
+body section.animation {
+  margin: 10vh;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body section.animation .hero {
+  width: 100%;
+  height: 0;
+}
+body section.animation .hero img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body .slider {
+  position: absolute; /*定位 根據top left來做定位*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /*background-color: linear-gradinet漸層作用*/
+  background: linear-gradient(to right, rgb(144, 144, 144), black);
+  z-index: -1;
+}
+body header nav {
+  box-shadow: 0 8px 6px -6px black;
+}
+body header nav ul {
+  display: flex;
+}
+body header nav ul li {
+  padding: 1rem;
+}
+body header nav ul li a {
+  font-size: 1.15rem;
+  transition: all 0.3s ease;
+}
+body header nav ul li a:hover {
+  color: yellow;
+}
+body main section.main-part {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+body main section.main-part h1 {
+  font-size: 3rem;
+}
+body main section.main-part p {
+  font-size: 1.5rem;
+}
+body main section.main-part div.All-input form input,
+body main section.main-part div.All-input form select {
+  font-size: 1.05rem;
+  padding: 0.5rem;
+  border: 0.5px solid rgb(39, 39, 21);
+  margin: 0.28rem;
+  border-radius: 0.25rem;
+}
+body main section.main-part div.All-input form button {
+  border: none;
+  cursor: pointer;
+  background-color: #727272;
+}
+body main section.main-part div.All-input form button i {
+  font-size: 1.25rem;
+  pointer-events: none;
+  color: white;
+}
+body main section.main-part button.plus-btn {
+  background-color: #727272;
+  border: none;
+  width: 2.5rem;
+  margin: 3rem 0rem;
+  cursor: pointer;
+}
+body main section.main-part div.resuit {
+  width: 200px;
+  height: 200px;
+  border: 3px solid red; /* 設定紅色邊框 */
+  border-radius: 50%; /* 讓元素變成圓形 */
+  text-align: center; /* 讓文字置中（僅水平） */
+  animation: border-color 10s infinite alternate;
+  /*
+  3s → 讓動畫在 3 秒內完成一次變色
+  infinite → 讓動畫無限循環
+  alternate → 讓動畫來回播放（避免突然變回紅色）*/
+}
+body main section.main-part div.resuit p {
+  margin-top: 15px;
+}
+body main section.main-part div.resuit h2#result-gpa {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.remove {
+  transform: scale(0);
+  transition: all 0.5s ease;
+}
+
+@keyframes scaleup {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes border-color {
+  /*設定動畫變化*/
+  0% {
+    border-color: red;
+  }
+  25% {
+    border-color: burlywood;
+  }
+  50% {
+    border-color: chartreuse;
+  }
+  75% {
+    border-color: blue;
+  }
+  100% {
+    border-color: rgb(251, 0, 255);
+  }
+}/*# sourceMappingURL=style.css.map */
