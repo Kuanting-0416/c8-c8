@@ -240,7 +240,7 @@ addButton.addEventListener("click", () => {
     setGPA();
     changeColor(e.target);
   });
-
+  //垃圾桶
   let NewButton = document.createElement("button");
   NewButton.classList.add("trash-button");
   let NewItag = document.createElement("i");
@@ -376,17 +376,52 @@ function handlesorting(direction) {
     <option value="D">D</option>
     <option value="D-">D-</option>
     <option value="F">F</option>
-    </select><!----><button class="trash-button">
+    </select><!----><button type="button" class="trash-button">
     <!--垃圾桶-->
     <i class="fas fa-trash"></i>
     </button>
   </div>
 </form>`;
   }
-  garders = document.querySelectorAll(".All-garder");
-  for (let i = 0; i < garders.length; i++) {
-    garders[i].children[3].value = objectArray[i].class_grade;
+  //select 用 js 來修改
+  grader = document.querySelectorAll("div.grader");
+  for (let i = 0; i < grader.length; i++) {
+    grader[i].children[3].value = objectArray[i].class_grade;
   }
+  //select 新增事件監聽 改變顏色
+  let allSelects = document.querySelectorAll(".select");
+  allSelects.forEach((select) => {
+    changeColor(select);
+    select.addEventListener("change", (e) => {
+      setGPA();
+      changeColor(e.target);
+    });
+  });
+
+  //credit 新增事件監聽
+  let allcredits = document.querySelectorAll(".class-credits");
+  allcredits.forEach((credit) => {
+    credit.addEventListener("change", (e) => {
+      setGPA();
+    });
+  });
+
+  //Trash 新增事件監聽
+  let allTrash = document.querySelectorAll(".trash-button");
+  allTrash.forEach((trash) => {
+    trash.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.target.parentElement.parentElement.style.animation =
+        "scaleDown 0.5s ease forwards";
+      e.target.parentElement.parentElement.addEventListener(
+        "animationend",
+        (e) => {
+          e.target.remove();
+          setGPA();
+        }
+      );
+    });
+  });
 }
 
 function merge(a1, a2) {
